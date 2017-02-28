@@ -11,7 +11,7 @@ FILINFO fileInfo; // The FILINFO structure holds a file information returned by 
 FIL file;         // The FIL structure (file object) holds state of an open file
 
 
-#define MOD_PATH "MODS"
+#define MOD_PATH "mods"
 
 int sample_in_tick;
 
@@ -46,7 +46,7 @@ void game_init()
 	f_mount(&fso,"",1); //mount now
 	
 	res = f_opendir(&dir, MOD_PATH);
-	if (res) {
+	if (res != FR_OK) {
 		message ("wtf no dir\n");
 		die(3,res);
 	}
@@ -58,7 +58,6 @@ void game_init()
 	}
 
 	loadNextFile();
-	audio_on=1;
 }
 
 
@@ -66,7 +65,7 @@ void game_frame()
 {
 }
 
-void game_line()
+void graph_line()
 {
 }
 
